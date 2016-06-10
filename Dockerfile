@@ -30,12 +30,12 @@ RUN git clone https://github.com/DexterInd/BrickPi_Python.git
 
 COPY config.txt /boot/
 COPY ir_receiver_check.py /BrickPi_Python/Sensor_Examples/ 
-COPY sound-service.py /BrickPi_Python/Sensor_Examples/ 
+COPY docker-LED-test/pi-brickpi-LED-test.py /BrickPi_Python/Sensor_Examples/ 
 COPY BrickPi.py /BrickPi_Python/Sensor_Examples/
 
 # Define working directory
 WORKDIR /data
 VOLUME /data
 
-CMD python /BrickPi_Python/Sensor_Examples/LEGO-Color_Sensor_Red_LED.py
+CMD python /BrickPi_Python/Sensor_Examples/pi-brickpi-LED-test.py
 
