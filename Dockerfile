@@ -37,3 +37,5 @@ COPY BrickPi.py /BrickPi_Python/Sensor_Examples/
 WORKDIR /data
 VOLUME /data
 
+CMD python /BrickPi_Python/Sensor_Examples/LEGO-Color_Sensor_Red_LED.py
+
