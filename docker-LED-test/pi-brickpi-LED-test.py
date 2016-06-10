@@ -1,53 +1,29 @@
 #!/usr/bin/env python
-from __future__ import division
-import web
-import xml.etree.ElementTree as ET
-# import BrickPi.py # Library to use Lego Minstorm sound sensor
-from BrickPi import *   
+# Jaikrishna
+# Initial Date: June 24, 2013
+# Last Updated: Oct 21, 2014 by John
+#
+# These files have been made available online through a Creative Commons Attribution-ShareAlike 3.0  license.
+# (http://creativecommons.org/licenses/by-sa/3.0/)
+#
+# http://www.dexterindustries.com/BrickPi
+# This code is for testing the BrickPi with a Lego Color Sensor
+# This code will turn a LEGO color sensor on Port 1 to red.  It will output a red LED.
+# You can also have the LED emit a Red, Green, or Blue light.
 
-# define REST API Route
-urls = (
-    '/soundintensity', 'list_users'
-)
+from BrickPi import *   #import BrickPi.py file to use BrickPi operations
 
-app = web.application(urls, globals())
-
-# print " from outside function"
 BrickPiSetup()  # setup the serial port for communication
-BrickPi.SensorType[PORT_1] = TYPE_SENSOR_RAW   #Set the type of sensor at PORT_1
-BrickPi.SensorType[PORT_2] = TYPE_SENSOR_RAW
-BrickPi.SensorType[PORT_3] = TYPE_SENSOR_RAW
-BrickPi.SensorType[PORT_4] = TYPE_SENSOR_RAW
-        
+
+Color_Sensor_Port = PORT_1                                                                              # Setup the sensor on Port 1.
+BrickPi.SensorType[Color_Sensor_Port] = TYPE_SENSOR_COLOR_GREEN   #Set the type of sensor, set it to function as a Red LED.
+                                                                                                                                # Change this value to change the LED Color:
+                                                                                                                                # TYPE_SENSOR_COLOR_RED
+                                                                                                                                # TYPE_SENSOR_COLOR_GREEN
+                                                                                                                                # TYPE_SENSOR_COLOR_BLUE
+
 BrickPiSetupSensors()   #Send the properties of sensors to BrickPi
 
-soundIntensityPercentage = 0
-
-class list_users:
-    def GET(self):
-        print " in function"
-        # BrickPiSetup()  # setup the serial port for communication
-
-        while True:
-            print " in whil"
-            print BrickPi.Sensor[PORT_1], BrickPi.Sensor[PORT_2], BrickPi.Sensor[PORT_3], BrickPi.Sensor[PORT_4]     #BrickPi.Sensor[PORT] stores the value obtained from sensor
-            result = BrickPiUpdateValues()  # Ask BrickPi to update values for sensors/motors
-            if not result :
-                print "Print all Sensor Data"
-                print BrickPi.Sensor[PORT_1], BrickPi.Sensor[PORT_2], BrickPi.Sensor[PORT_3], BrickPi.Sensor[PORT_4]     #BrickPi.Sensor[PORT] stores the value obtained from sensor
-                result = BrickPiUpdateValues()  # Ask BrickPi to update values for sensors/motors
-                # print BrickPi.Sensor[PORT_2]
-                # print (1000 - BrickPi.Sensor[PORT_2])
-                inv = (1000 - BrickPi.Sensor[PORT_2])
-                soundIntensity = inv / 1000
-                soundIntensityPercentage = soundIntensity  * 100
-                print BrickPi.Sensor[PORT_2], inv, soundIntensity, soundIntensityPercentage
-                break
-            time.sleep(.1)
-        print soundIntensityPercentage
-        # return the sound intensity 
-        return soundIntensityPercentage 
-
-
-if __name__ == "__main__":
-    app.run()
+while True:
+    result = BrickPiUpdateValues()  # Ask BrickPi to update values for sensors/motors
+    time.sleep(.1)     # sleep for 100 ms
