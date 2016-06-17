@@ -33,12 +33,13 @@ COPY ir_receiver_check.py /BrickPi_Python/Sensor_Examples/
 COPY BrickPi.py /BrickPi_Python/Sensor_Examples/
 
 # Brickpi LED test file
-COPY docker-LED-test/pi-brickpi-LED-test.py /BrickPi_Python/Sensor_Examples/
+COPY docker-LED-test/*.py /BrickPi_Python/Sensor_Examples/
+
 
 # Define working directory
 WORKDIR /data
 VOLUME /data
 
 # This command turns on the LED
-CMD python /BrickPi_Python/Sensor_Examples/pi-brickpi-LED-test.py
+CMD python /BrickPi_Python/Sensor_Examples/pi-brickpi-soundintensity-threshold-breach-indicator.py
 
