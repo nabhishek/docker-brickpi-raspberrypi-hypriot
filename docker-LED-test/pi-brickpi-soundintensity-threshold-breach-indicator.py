@@ -29,7 +29,7 @@ try:
 except KeyError:
     acceptable_threshold_intensity = 10
 
-print "acceptable threshold intensity: " + acceptable_threshold_intensity
+print "acceptable threshold intensity: " + str(acceptable_threshold_intensity)
 
 result = BrickPiUpdateValues()  # Ask BrickPi to update values for sensors/motors
 
