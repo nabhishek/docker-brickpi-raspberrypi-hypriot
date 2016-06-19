@@ -24,12 +24,12 @@ acceptable_threshold_intensity = 10
 
 # Setup acceptable sound intensity threshold, if environment variable indicating the threshold is not set then use default value of 10 %
 try:
-    print "intensity environment variable has value"
-    print os.environ["INTENSITY_THRESHOLD"]
-    acceptable_threshold_intensity = os.environ["INTENSITY_THRESHOLD"]
+    print "INTENSITY_THRESHOLD: " + os.environ["INTENSITY_THRESHOLD"]
+    acceptable_threshold_intensity = int(os.environ["INTENSITY_THRESHOLD"])
 except KeyError:
     acceptable_threshold_intensity = 10
 
+print "acceptable threshold intensity: " + acceptable_threshold_intensity
 
 result = BrickPiUpdateValues()  # Ask BrickPi to update values for sensors/motors
 
