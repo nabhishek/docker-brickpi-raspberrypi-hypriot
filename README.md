@@ -5,10 +5,13 @@ The sound intensity threshold monitor uses Raspberrypi (Using Hypriot image, and
 Solution Overview
 ![Solution Overview](https://raw.githubusercontent.com/maniSbindra/docker-brickpi-raspberrypi-hypriot/master/images/overview.jpg "Solution Overview")
 
+## Raspberrypi , Brickpi configuration with Hypriot image
+* The hypriot image is used for running docker container images on the brickpi. When using brickpi with hypriot image, I need to to make changes to the cmdline.txt, config.txt files as indicated on the Brickpi site, and you will need to modify the device-init.yml file to use your wifi network
+
 ## Python Code 
 * As indicated in the Docker file, code executed in the docker container is in the python file docker-LED-test/pi-brickpi-soundintensity-threshold-breach-indicator.py
 
-### sample run command : 
+### sample docker run command : 
 * Setting threshold using environment variable :
 **docker run -e INTENSITY_THRESHOLD=40 -d --device /dev/ttyAMA0:/dev/ttyAMA0 --device /dev/mem:/dev/mem --privileged -ti maninderjit/pi-brickpi**
 
