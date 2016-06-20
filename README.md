@@ -2,7 +2,7 @@
 The sound intensity threshold monitor uses Raspberrypi (Using Hypriot image, and maninderjit/pi-brickpi docker container image)  and Brickpi (which controls Lego mindstorm sound and color/led sensors), and indicates that the sound intensity is above configured threshold by turning the RED led on.
 
 ## Overview
-Solution Overview
+Solution Overview ( see https://blogs.msdn.microsoft.com/manibindra/2016/06/20/noise-pollution-monitor-packaged-as-a-docker-container-using-lego-mindstorms-sensors-brickpi-and-raspberry-pi/)
 ![Solution Overview](https://raw.githubusercontent.com/maniSbindra/docker-brickpi-raspberrypi-hypriot/master/images/overview.jpg "Solution Overview")
 
 ## Note ! Brickpi configuration with Hypriot image
