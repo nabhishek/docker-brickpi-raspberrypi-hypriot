@@ -1,5 +1,5 @@
 FROM resin/rpi-raspbian:jessie
-MAINTAINER Govinda Fichtner <govinda@hypriot.com>
+MAINTAINER Maninderjit Bindra <maninder_bindra@outlook.com>
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
